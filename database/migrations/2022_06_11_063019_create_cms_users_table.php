@@ -19,7 +19,7 @@ class CreateCmsUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->integer('id_cms_privileges')->nullable();
+            $table->unsignedInteger('id_cms_privileges')->nullable()->index('cms_privileges');
             $table->timestamps();
             $table->string('status', 50)->nullable();
         });

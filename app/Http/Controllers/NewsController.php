@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\LikeNews;
 
 class NewsController extends Controller
 {
@@ -78,5 +79,64 @@ class NewsController extends Controller
                 'news' => $news->toArray()
             ],
         ],200);  
+    }
+
+    public function likeNews($id){
+        $news = LikeNews::where('id_news',$id)->first();
+
+        if($news == null){
+            $likeNews = new LikeNews;
+            $likeNews->id_news = $id;
+            $likeNews->count = 1;
+            $likeNews->save();
+            return response()->json([
+                'status' => 'Success',
+                'data' => [
+                    'message' => 'Like news success'
+                ],
+            ],200);
+        }else{
+            $news->count = $news->count + 1;
+            $news->save();
+            return response()->json([
+                'status' => 'Success',
+                'data' => [
+                    'news' => $news
+                ],
+            ],200); 
+        }
+    }
+
+    public function getLikeNews($id){
+        $news = LikeNews::where('id_news',$id)->first();
+
+        if($news == null){
+            return response()->json([
+                'status' => 'Success',
+                'data' => [
+                    'count' => 0,
+                ],
+            ],200);
+        }else{
+            return response()->json([
+                'status' => 'Success',
+                'data' => [
+                    'count' => $news->count,
+                ],
+            ],200);
+        } 
+    }
+
+    public function unLikeNews($id){
+        $news = LikeNews::where('id_news',$id)->first();
+
+        $news->count = $news->count - 1;
+        $news->save();
+        return response()->json([
+            'status' => 'Success',
+            'data' => [
+                'news' => $news
+            ],
+        ],200);
     }
 }

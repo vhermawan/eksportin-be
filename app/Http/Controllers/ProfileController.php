@@ -62,28 +62,26 @@ class ProfileController extends Controller
         $umkm = Umkm::select('umkms.*', 'category_umkms.name as category')
                 ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
                 ->findOrFail($id_umkm);
+
         $user = CmsUser::findOrFail($umkm->id_cms_users);
         $previous_name = $umkm->photo_url;
         $umkm->update($request->all());
         $umkm->save();
+       
         if($request->hasFile('photo'))
         {
-            // $usersImage = public_path('uploads/umkm/'.$previous_name); // get previous image from folder
-            // if (File::exists($usersImage)) { // unlink or remove previous image from folder
-            //     unlink($usersImage);
-            // }
             $uploadedFile = $request->file('photo');
             $filename = time() . '.' . $uploadedFile->getClientOriginalExtension();
             Storage::disk('local')->putFileAs(
-                'uploads/2/'.Carbon::now()->format('Y-m'),
+                'uploads/'.$umkm->id_cms_users.'/'.Carbon::now()->format('Y-m'),
                 $uploadedFile,
                 $filename
-              );
-            // $file = $file->move('uploads/umkm/', $new_photo);
-            $umkm->photo_url = 'uploads/2/'.Carbon::now()->format('Y-m').'/'.$filename;
+            );
+            $umkm->photo_url = 'uploads/'.$umkm->id_cms_users.'/'.Carbon::now()->format('Y-m').'/'.$filename;
             $umkm->save();
         }
         $user->update($request->all());
+        
         return response()->json([
             'status' => 'Success',
             'message' => 'Successfully updated user!',

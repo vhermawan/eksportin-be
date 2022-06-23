@@ -18,10 +18,14 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
         $credentials = request(['email', 'password']);
+        
         if(!auth()->attempt($credentials))
+        {
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
+        }
+
         
         if(auth()->user()->status == 'Inactive')
         {
@@ -54,7 +58,7 @@ class AuthController extends Controller
 
     public function register(Request $request){
         $request->validate([
-            // 'email' => 'required|string|email|unique:cms_users',
+            'email' => 'required|string|email|unique:cms_users',
             'password' => 'required|string|confirmed',
             'name' => 'required|string'
         ]);

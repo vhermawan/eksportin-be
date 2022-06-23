@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryBuyersTable extends Migration
+class CreateCourseUmkmsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCategoryBuyersTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_buyers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->nullable();
+        Schema::create('course_umkms', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('id_umkms')->nullable();
+            $table->unsignedInteger('id_courses')->nullable()->index('umkms');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCategoryBuyersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_buyers');
+        Schema::dropIfExists('course_umkms');
     }
 }

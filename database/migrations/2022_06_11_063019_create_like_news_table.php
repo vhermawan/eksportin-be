@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryNewsTable extends Migration
+class CreateLikeNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateCategoryNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_news', function (Blueprint $table) {
+        Schema::create('like_news', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->unsignedInteger('id_news')->nullable()->index('like_news');
+            $table->integer('count')->nullable();
             $table->timestamps();
+
+            $table->foreign(['id_news'], 'news')->references(['id'])->on('like_news')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateCategoryNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_news');
+        Schema::dropIfExists('like_news');
     }
 }

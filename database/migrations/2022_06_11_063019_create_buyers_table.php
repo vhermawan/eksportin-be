@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUmkmsTable extends Migration
+class CreateBuyersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateUmkmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('umkms', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('id_cms_users')->nullable();
+        Schema::create('buyers', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->string('photo_url')->nullable();
+            $table->string('photo')->nullable();
             $table->text('description')->nullable();
-            $table->integer('id_category_umkms')->nullable();
+            $table->unsignedInteger('id_category_buyers')->nullable()->index('category_buyer');
+            $table->unsignedInteger('id_cms_users')->nullable()->index('cms_user_buyer');
             $table->string('slug')->nullable();
-            $table->string('bussiness_entity')->nullable();
+            $table->string('products')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ class CreateUmkmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('umkms');
+        Schema::dropIfExists('buyers');
     }
 }
