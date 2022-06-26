@@ -28,8 +28,8 @@ Route::get('/news/{category}',  'NewsController@getNews');
 Route::get('/lasted-news',  'NewsController@getLastNews');
 Route::get('/news-detail/{slug}',  'NewsController@getDetailNews');
 Route::get('/news-corelate/{category}',  'NewsController@getCorelateNews');
-Route::get('/like-news/{id}',  'NewsController@likeNews');
-Route::get('/unlike-news/{id}',  'NewsController@unLikeNews');
+Route::post('/like-news/{id}',  'NewsController@likeNews');
+Route::post('/unlike-news/{id}',  'NewsController@unLikeNews');
 Route::get('/get-like-news/{id}',  'NewsController@getLikeNews');
 
 Route::get('/stakeholders/{category}',  'StakeholderController@getStakeholders');  
