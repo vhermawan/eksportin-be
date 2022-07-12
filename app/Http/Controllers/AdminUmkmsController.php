@@ -30,37 +30,36 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Users","name"=>"id_cms_users","join"=>"cms_users,name"];
-			$this->col[] = ["label"=>"Address","name"=>"address"];
-			$this->col[] = ["label"=>"Phone","name"=>"phone"];
-			$this->col[] = ["label"=>"Photo Url","name"=>"photo_url"];
-			$this->col[] = ["label"=>"Description","name"=>"description"];
-			$this->col[] = ["label"=>"Category Umkms","name"=>"id_category_umkms","join"=>"category_umkms,name"];
-			$this->col[] = ["label"=>"Slug","name"=>"slug"];
+			$this->col[] = ["label"=>"Nama","name"=>"id_cms_users","join"=>"cms_users,name"];
+			$this->col[] = ["label"=>"Alamat","name"=>"address"];
+			$this->col[] = ["label"=>"Nomor telepon","name"=>"phone"];
+			$this->col[] = ["label"=>"Foto","name"=>"photo_url","image"=>true];
+			$this->col[] = ["label"=>"Kategori","name"=>"id_category_umkms","join"=>"category_umkms,name"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Name','name'=>'id_cms_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
-			$this->form[] = ['label'=>'Address','name'=>'address','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Phone','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
-			$this->form[] = ['label'=>'Photo Url','name'=>'photo_url','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Category Umkms','name'=>'id_category_umkms','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_umkms,name'];
-			$this->form[] = ['label'=>'Slug','name'=>'slug','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Bussiness Entity','name'=>'bussiness_entity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nama','name'=>'id_cms_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			$this->form[] = ['label'=>'Alamat','name'=>'address','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nomor Telepon','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
+			$this->form[] = ['label'=>'Foto','name'=>'photo_url','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kategori','name'=>'id_category_umkms','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_umkms,name'];
+			$this->form[] = ['label'=>'Instagram','name'=>'instagram','type'=>'text','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Facebook','name'=>'facebook','type'=>'text','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Shopee','name'=>'shopee','type'=>'text','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Tokopedia','name'=>'tokopedia','type'=>'text','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Cms Users","name"=>"id_cms_users","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"cms_users,name"];
-			//$this->form[] = ["label"=>"Address","name"=>"address","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Phone","name"=>"phone","type"=>"number","required"=>TRUE,"validation"=>"required|numeric","placeholder"=>"You can only enter the number only"];
-			//$this->form[] = ["label"=>"Photo Url","name"=>"photo_url","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Description","name"=>"description","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Category Umkms","name"=>"id_category_umkms","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"category_umkms,name"];
-			//$this->form[] = ["label"=>"Slug","name"=>"slug","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Bussiness Entity","name"=>"bussiness_entity","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ['label'=>'Nama','name'=>'id_cms_users','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Alamat','name'=>'address','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Nomor Telepon','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
+			//$this->form[] = ['label'=>'Foto','name'=>'photo_url','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Kategori','name'=>'id_category_umkms','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_umkms,name'];
+			//$this->form[] = ['label'=>'Instagram','name'=>'ins','validation'=>'required','width'=>'col-sm-9'];
 			# OLD END FORM
 
 			/* 
