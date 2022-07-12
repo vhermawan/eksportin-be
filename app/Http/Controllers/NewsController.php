@@ -38,7 +38,7 @@ class NewsController extends Controller
     }
 
     public function getDetailNews($slug){
-        $news = News::select('news.*', 'category_news.name as category','cms_users.name as author','cms_users.id')
+        $news = News::select('news.*', 'category_news.name as category','cms_users.name as author','cms_users.id','news.id as id_news')
                 ->leftJoin('cms_users', 'news.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_news', 'news.id_category_news', '=', 'category_news.id')
                 ->where('slug',$slug)
@@ -66,11 +66,12 @@ class NewsController extends Controller
         ],200); 
     }
     
-    public function getCorelateNews($category){
-        $news = News::select('news.*', 'category_news.name as category','cms.users.id')
+    public function getCorelateNews($category,$id){
+        $news = News::select('news.*', 'category_news.name as category','cms_users.id')
                 ->leftJoin('cms_users', 'news.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_news', 'news.id_category_news', '=', 'category_news.id')
                 ->where('category_news.id', $category)
+                ->where('news.id', '!=', $id)
                 ->paginate(3);
         return response()->json([
             'status' => 'Success',

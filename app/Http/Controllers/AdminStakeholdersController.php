@@ -22,7 +22,7 @@
 			$this->button_edit = true;
 			$this->button_delete = true;
 			$this->button_detail = true;
-			$this->button_show = false;
+			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
@@ -33,33 +33,31 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Nama","name"=>"name"];
 			$this->col[] = ["label"=>"Alamat","name"=>"address"];
-			$this->col[] = ["label"=>"Telefon","name"=>"phone"];
-			$this->col[] = ["label"=>"Gambar","name"=>"photo","image"=>true];
+			$this->col[] = ["label"=>"Telepon","name"=>"phone"];
+			$this->col[] = ["label"=>"Foto","name"=>"photo","image"=>true];
 			$this->col[] = ["label"=>"Kategori","name"=>"id_category_stakeholders","join"=>"category_stakeholders,name"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Nama','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Alamat','name'=>'address','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Telefon','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
-			$this->form[] = ['label'=>'Gambar','name'=>'photo','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:1|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Alamat','name'=>'address','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Telepon','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
+			$this->form[] = ['label'=>'Foto','name'=>'photo','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kategori','name'=>'id_category_stakeholders','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_stakeholders,name'];
-			$this->form[] = ['label'=>'Nomor Usaha','name'=>'bussiness_entity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Layanan','name'=>'services','type'=>'multitext','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Services','name'=>'services','type'=>'multitext','validation'=>'required','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Nama','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Alamat','name'=>'address','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Telefon','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
-			//$this->form[] = ['label'=>'Gambar','name'=>'photo','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Alamat','name'=>'address','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Telepon','name'=>'phone','type'=>'number','validation'=>'required|numeric','width'=>'col-sm-10','placeholder'=>'You can only enter the number only'];
+			//$this->form[] = ['label'=>'Foto','name'=>'photo','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			//$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Kategori','name'=>'id_category_stakeholders','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_stakeholders,name'];
-			//$this->form[] = ['label'=>'Nomor Usaha','name'=>'bussiness_entity','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Layanan','name'=>'services','type'=>'multitext','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Services','name'=>'services','type'=>'multitext','validation'=>'required','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -281,10 +279,10 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-				$stakeholder = Stakeholder::find($id);
-				$stakeholder->id_cms_users = CRUDBooster::myId();
-				$stakeholder->slug = str_slug($stakeholder->name);
-				$stakeholder->save();
+			$stakeholder = Stakeholder::find($id);
+			$stakeholder->id_cms_users = CRUDBooster::myId();
+			$stakeholder->slug = str_slug($stakeholder->name);
+			$stakeholder->save();
 	    }
 
 	    /* 
@@ -309,10 +307,10 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
-				$stakeholder = Stakeholder::find($id);
-				$stakeholder->id_cms_users = CRUDBooster::myId();
-				$stakeholder->slug = str_slug($stakeholder->name);
-				$stakeholder->save();
+			$stakeholder = Stakeholder::find($id);
+			$stakeholder->id_cms_users = CRUDBooster::myId();
+			$stakeholder->slug = str_slug($stakeholder->name);
+			$stakeholder->save();
 	    }
 
 	    /* 

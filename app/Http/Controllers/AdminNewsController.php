@@ -276,11 +276,11 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-					$news = News::find($id);
+			$news = News::find($id);
 
-					$news->id_cms_users = CRUDBooster::myId();
-					$news->slug = str_slug($news->title);
-					$news->save();
+			$news->id_cms_users = CRUDBooster::myId();
+			$news->slug = str_slug($news->title);
+			$news->save();
 	    }
 
 	    /* 
@@ -305,11 +305,11 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
-					$news = News::find($id);
+			$news = News::find($id);
 
-					$news->id_cms_users = CRUDBooster::myId();
-					$news->slug = str_slug($news->title);
-					$news->save();
+			$news->id_cms_users = CRUDBooster::myId();
+			$news->slug = str_slug($news->title);
+			$news->save();
 	    }	
 
 	    /* 

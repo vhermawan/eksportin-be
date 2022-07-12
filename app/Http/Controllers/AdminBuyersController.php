@@ -57,7 +57,7 @@
 			//$this->form[] = ['label'=>'Foto','name'=>'photo','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
 			//$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:1|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Kategori','name'=>'id_category_buyers','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_buyers,name'];
-			//$this->form[] = ['label'=>'Produk','name'=>'products','type'=>'multitext','validation'=>'required|string|min:5','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Produk','name'=>'products','type'=>'multitext','validation'=>'required','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

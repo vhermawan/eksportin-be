@@ -27,7 +27,7 @@ Route::get('/lasted-umkms/{category}',  'UmkmController@getLastUmkm');
 Route::get('/news/{category}',  'NewsController@getNews');
 Route::get('/lasted-news',  'NewsController@getLastNews');
 Route::get('/news-detail/{slug}',  'NewsController@getDetailNews');
-Route::get('/news-corelate/{category}',  'NewsController@getCorelateNews');
+Route::get('/news-corelate/{category}/{id}',  'NewsController@getCorelateNews');
 Route::post('/like-news/{id}',  'NewsController@likeNews');
 Route::post('/unlike-news/{id}',  'NewsController@unLikeNews');
 Route::get('/get-like-news/{id}',  'NewsController@getLikeNews');

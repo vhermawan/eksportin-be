@@ -9,7 +9,7 @@ class StakeholderController extends Controller
 {
     public function getStakeholders($category){
         if($category == 'all'){
-            $stakeholders = Stakeholder::select('*', 'category_stakeholders.name as category')
+            $stakeholders = Stakeholder::select('*', 'category_stakeholders.name as category','stakeholders.name as name_stakeholder')
                     ->leftJoin('category_stakeholders', 'stakeholders.id_category_stakeholders', '=', 'category_stakeholders.id')
                     ->paginate(9);
             return response()->json([
@@ -20,7 +20,7 @@ class StakeholderController extends Controller
                 ],
             ],200);
         }else{
-            $stakeholders = Stakeholder::select('*', 'category_stakeholders.name as category')
+            $stakeholders = Stakeholder::select('*', 'category_stakeholders.name as category','stakeholders.name as name_stakeholder')
                             ->leftJoin('category_stakeholders', 'stakeholders.id_category_stakeholders', '=', 'category_stakeholders.id')
                             ->where('id_category_stakeholders',$category)
                             ->paginate(10);
@@ -35,7 +35,7 @@ class StakeholderController extends Controller
     }
 
     public function getDetailStakeholder($slug){
-        $stakeholder = Stakeholder::select('*', 'category_stakeholders.name as category')
+        $stakeholder = Stakeholder::select('*', 'category_stakeholders.name as category','stakeholders.name as name_stakeholder')
                       ->leftJoin('category_stakeholders', 'stakeholders.id_category_stakeholders', '=', 'category_stakeholders.id')
                       ->where('slug',$slug)
                       ->first();
@@ -49,7 +49,7 @@ class StakeholderController extends Controller
 
     //get stakeholder with category as parameter
     public function getStakeholderCategory($category){
-        $stakeholder = Stakeholder::select('*', 'category_stakeholders.name as category')
+        $stakeholder = Stakeholder::select('*', 'category_stakeholders.name as category','stakeholders.name as name_stakeholder')
                       ->leftJoin('category_stakeholders', 'news.id_category_stakeholders', '=', 'category_stakeholders.id')
                       ->where('id_category_stakeholders',$category)
                       ->paginate(10);
@@ -65,7 +65,7 @@ class StakeholderController extends Controller
 
     public function searchStakeholder(Request $request,$category){
         if($category == 'all'){
-            $stakeholders = Stakeholder::select('*', 'category_stakeholders.name as category')
+            $stakeholders = Stakeholder::select('*', 'category_stakeholders.name as category','stakeholders.name as name_stakeholder')
             ->leftJoin('category_stakeholders', 'stakeholders.id_category_stakeholders', '=', 'category_stakeholders.id')
             ->where([
                 ['stakeholders.name','LIKE','%'.$request->name .'%']
