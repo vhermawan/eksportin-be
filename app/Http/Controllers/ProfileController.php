@@ -65,7 +65,15 @@ class ProfileController extends Controller
 
         $user = CmsUser::findOrFail($umkm->id_cms_users);
         $previous_name = $umkm->photo_url;
-        $umkm->update($request->all());
+        $umkm->address = $request->address;
+        $umkm->phone = $request->phone;
+        $umkm->description = $request->description;
+        $umkm->id_category_umkms = $request->id_category_umkms;
+        $umkm->instagram = $request->instagram;
+        $umkm->facebook = $request->facebook;
+        $umkm->shopee = $request->shopee;
+        $umkm->tokopedia = $request->tokopedia;
+        $umkm->slug = str_slug($request->name);
         $umkm->save();
        
         if($request->hasFile('photo'))
