@@ -16,9 +16,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $name
  * @property string|null $address
  * @property string|null $phone
- * @property string|null $photo_url
+ * @property string|null $photo
  * @property string|null $description
  * @property int|null $id_category_stakeholders
+ * @property int|null $id_cms_users
  * @property string|null $slug
  * @property string|null $bussiness_entity
  * @property string|null $services
@@ -32,7 +33,8 @@ class Stakeholder extends Model
 	protected $table = 'stakeholders';
 
 	protected $casts = [
-		'id_category_stakeholders' => 'int'
+		'id_category_stakeholders' => 'int',
+		'id_cms_users' => 'int'
 	];
 
 	protected $fillable = [
@@ -42,6 +44,7 @@ class Stakeholder extends Model
 		'photo',
 		'description',
 		'id_category_stakeholders',
+		'id_cms_users',
 		'slug',
 		'bussiness_entity',
 		'services'

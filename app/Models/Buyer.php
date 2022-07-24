@@ -16,9 +16,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $name
  * @property string|null $address
  * @property string|null $phone
- * @property string|null $photo_url
+ * @property string|null $photo
  * @property string|null $description
  * @property int|null $id_category_buyers
+ * @property int|null $id_cms_users
  * @property string|null $slug
  * @property string|null $products
  * @property Carbon|null $created_at
@@ -31,7 +32,8 @@ class Buyer extends Model
 	protected $table = 'buyers';
 
 	protected $casts = [
-		'id_category_buyers' => 'int'
+		'id_category_buyers' => 'int',
+		'id_cms_users' => 'int'
 	];
 
 	protected $fillable = [
@@ -41,9 +43,11 @@ class Buyer extends Model
 		'photo',
 		'description',
 		'id_category_buyers',
+		'id_cms_users',
 		'slug',
 		'products'
 	];
+
 	protected $appends = ['image_URL'];
 	public function getImageURLAttribute()
     {

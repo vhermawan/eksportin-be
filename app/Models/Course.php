@@ -15,8 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string|null $title
  * @property int|null $id_category_courses
- * @property string|null $id_speakers
- * @property string|null $photo_url
+ * @property int|null $id_speakers
+ * @property string|null $photo
  * @property string|null $description
  * @property string|null $slug
  * @property Carbon|null $created_at
@@ -29,14 +29,15 @@ class Course extends Model
 	protected $table = 'courses';
 
 	protected $casts = [
-		'id_category_courses' => 'int'
+		'id_category_courses' => 'int',
+		'id_speakers' => 'int'
 	];
 
 	protected $fillable = [
 		'title',
 		'id_category_courses',
 		'id_speakers',
-		'photo_url',
+		'photo',
 		'description',
 		'slug'
 	];
@@ -44,8 +45,8 @@ class Course extends Model
 	protected $appends = ['image_URL'];
 	public function getImageURLAttribute()
     {
-        if ($this->photo_url != null) {
-			return asset($this->photo_url);
+        if ($this->photo != null) {
+			return asset($this->photo);
         }
     }
 }
