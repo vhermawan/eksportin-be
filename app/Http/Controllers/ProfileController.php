@@ -66,6 +66,10 @@ class ProfileController extends Controller
         $user = CmsUser::findOrFail($umkm->id_cms_users);
         $previous_name = $umkm->photo_url;
         $umkm->address = $request->address;
+        $umkm->id_province = $request->id_province;
+        $umkm->id_city = $request->id_city;
+        $umkm->id_district = $request->id_district;
+        $umkm->id_subdistrict = $request->id_subdistrict;
         $umkm->phone = $request->phone;
         $umkm->description = $request->description;
         $umkm->id_category_umkms = $request->id_category_umkms;
