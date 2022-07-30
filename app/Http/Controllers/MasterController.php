@@ -84,7 +84,7 @@ class MasterController extends Controller
 
     //get city
     public function getCity($id){
-        $city = City::where('province_id',$id)->get();
+        $city = City::where('prov_id',$id)->get();
         return response()->json([
             'status' => 'Success',
             'size' => sizeof($city),
@@ -108,7 +108,7 @@ class MasterController extends Controller
 
     //get subdistrict
     public function getSubdistrict($id){
-        $subdistrict = Subdistrict::where('district_id',$id)->get();
+        $subdistrict = Subdistrict::where('dis_id',$id)->get();
         return response()->json([
             'status' => 'Success',
             'size' => sizeof($subdistrict),

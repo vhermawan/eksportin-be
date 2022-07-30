@@ -73,7 +73,7 @@ Route::get('category-courses', 'MasterController@getCategoryCourses');
 Route::get('province','MasterController@getProvince');
 Route::get('city/{id}','MasterController@getCity');
 Route::get('district/{id}','MasterController@getDistrict');
-Route::get('sub-district/{id}','MasterController@getSubDistrict');
+Route::get('subdistrict/{id}','MasterController@getSubDistrict');
 
 Route::group([ 
     'prefix' => 'password'

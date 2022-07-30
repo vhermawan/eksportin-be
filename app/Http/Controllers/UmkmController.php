@@ -12,13 +12,12 @@ class UmkmController extends Controller
             $umkms = Umkm::select('*', 'category_umkms.name as category', 'cms_users.name as name_umkm')
                     ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
                     ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
-                    ->leftJoin('province', 'umkms.id_province', '=', 'province.prov_id')
-                    ->leftJoin('city', 'umkms.id_city', '=', 'city.city_id')
-                    ->leftJoin('district', 'umkms.id_district', '=', 'district.district_id')
-                    ->leftJoin('subdistrict', 'umkms.id_subdistrict', '=', 'subdistrict.subdistrict_id')
+                    ->leftJoin('provinces', 'umkms.id_province', '=', 'provinces.prov_id')
+                    ->leftJoin('cities', 'umkms.id_city', '=', 'cities.city_id')
+                    ->leftJoin('districts', 'umkms.id_district', '=', 'districts.dis_id')
+                    ->leftJoin('subdistricts', 'umkms.id_subdistrict', '=', 'subdistricts.subdis_id')
                     ->whereNotNull('address')
                     ->whereNotNull('description')
-                    ->whereNotNull('bussiness_entity')
                     ->whereNotNull('umkms.id_category_umkms')
                     ->paginate(9);
 
@@ -33,14 +32,13 @@ class UmkmController extends Controller
             $umkm = Umkm::select('*', 'category_umkms.name as category','cms_users.name as name_umkm')
             ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
             ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
-            ->leftJoin('province', 'umkms.id_province', '=', 'province.prov_id')
-            ->leftJoin('city', 'umkms.id_city', '=', 'city.city_id')
-            ->leftJoin('district', 'umkms.id_district', '=', 'district.district_id')
-            ->leftJoin('subdistrict', 'umkms.id_subdistrict', '=', 'subdistrict.subdistrict_id')
+            ->leftJoin('provinces', 'umkms.id_province', '=', 'provinces.prov_id')
+            ->leftJoin('cities', 'umkms.id_city', '=', 'cities.city_id')
+            ->leftJoin('districts', 'umkms.id_district', '=', 'districts.dis_id')
+            ->leftJoin('subdistricts', 'umkms.id_subdistrict', '=', 'subdistricts.subdis_id')
             ->where('id_category_umkms',$category)
             ->whereNotNull('address')
             ->whereNotNull('description')
-            ->whereNotNull('bussiness_entity')
             ->whereNotNull('umkms.id_category_umkms')
             ->paginate(9);
     
@@ -58,10 +56,10 @@ class UmkmController extends Controller
         $umkm = Umkm::select('umkms.*', 'category_umkms.name as category', 'cms_users.name as name')
                 ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
-                ->leftJoin('province', 'umkms.id_province', '=', 'province.prov_id')
-                ->leftJoin('city', 'umkms.id_city', '=', 'city.city_id')
-                ->leftJoin('district', 'umkms.id_district', '=', 'district.district_id')
-                ->leftJoin('subdistrict', 'umkms.id_subdistrict', '=', 'subdistrict.subdistrict_id')
+                ->leftJoin('provinces', 'umkms.id_province', '=', 'provinces.prov_id')
+                ->leftJoin('cities', 'umkms.id_city', '=', 'cities.city_id')
+                ->leftJoin('districts', 'umkms.id_district', '=', 'districts.dis_id')
+                ->leftJoin('subdistricts', 'umkms.id_subdistrict', '=', 'subdistricts.subdis_id')
                 ->where('slug',$slug)->first();
         return response()->json([
             'status' => 'Success',
@@ -76,10 +74,10 @@ class UmkmController extends Controller
         $umkm = Umkm::select('*', 'category_umkms.name as category','cms_users.name as name')
                 ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
-                ->leftJoin('province', 'umkms.id_province', '=', 'province.prov_id')
-                ->leftJoin('city', 'umkms.id_city', '=', 'city.city_id')
-                ->leftJoin('district', 'umkms.id_district', '=', 'district.district_id')
-                ->leftJoin('subdistrict', 'umkms.id_subdistrict', '=', 'subdistrict.subdistrict_id')
+                ->leftJoin('provinces', 'umkms.id_province', '=', 'provinces.prov_id')
+                ->leftJoin('cities', 'umkms.id_city', '=', 'cities.city_id')
+                ->leftJoin('districts', 'umkms.id_district', '=', 'districts.dis_id')
+                ->leftJoin('subdistricts', 'umkms.id_subdistrict', '=', 'subdistricts.subdis_id')
                 ->where('id_category_umkms',$category)
                 ->paginate(10);
         
@@ -97,14 +95,14 @@ class UmkmController extends Controller
         $umkm = Umkm::select('*', 'category_umkms.name as category','cms_users.name as name_umkm')
                 ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
-                ->leftJoin('province', 'umkms.id_province', '=', 'province.prov_id')
-                ->leftJoin('city', 'umkms.id_city', '=', 'city.city_id')
-                ->leftJoin('district', 'umkms.id_district', '=', 'district.district_id')
-                ->leftJoin('subdistrict', 'umkms.id_subdistrict', '=', 'subdistrict.subdistrict_id')
+                ->leftJoin('provinces', 'umkms.id_province', '=', 'provinces.prov_id')
+                ->leftJoin('cities', 'umkms.id_city', '=', 'cities.city_id')
+                ->leftJoin('districts', 'umkms.id_district', '=', 'districts.dis_id')
+                ->leftJoin('subdistricts', 'umkms.id_subdistrict', '=', 'subdistricts.subdis_id')
                 ->where('id_category_umkms',$category)
                 ->whereNotNull('address')
                 ->whereNotNull('description')
-                ->whereNotNull('bussiness_entity')
+                
                 ->whereNotNull('umkms.id_category_umkms')
                 ->paginate(3);
         
