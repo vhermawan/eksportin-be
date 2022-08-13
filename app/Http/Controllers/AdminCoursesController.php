@@ -43,7 +43,7 @@
 			$this->form[] = ['label'=>'Kategori','name'=>'id_category_courses','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_courses,name'];
 			$this->form[] = ['label'=>'Pemateri','name'=>'id_speakers','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'speakers,name'];
 			$this->form[] = ['label'=>'Foto','name'=>'photo','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:1|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:1|max:50000000','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -52,7 +52,7 @@
 			//$this->form[] = ['label'=>'Kategori','name'=>'id_category_courses','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'category_courses,name'];
 			//$this->form[] = ['label'=>'Pemateri','name'=>'id_speakers','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'speakers,name'];
 			//$this->form[] = ['label'=>'Foto','name'=>'photo','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Deskripsi','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:1|max:5000','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
