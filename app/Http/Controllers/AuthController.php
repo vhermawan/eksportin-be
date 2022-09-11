@@ -25,7 +25,6 @@ class AuthController extends Controller
                 'message' => 'Unauthorized'
             ], 401);
         }
-
         
         if(auth()->user()->status == 'Inactive')
         {
@@ -84,7 +83,6 @@ class AuthController extends Controller
             $umkm->photo_url = 'uploads/avatar/avatar.png';
             $umkm->description = $request->description;
             $umkm->id_category_umkms = $request->id_category_umkms;
-            $umkm->bussiness_entity = $request->bussiness_entity;
             $umkm->save();
         }catch(\Exception $e){
             DB::rollback();

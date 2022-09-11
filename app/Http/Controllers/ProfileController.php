@@ -10,6 +10,7 @@ use Auth;
 use Validator;
 use File;
 use Storage;
+use Hash;
 use Illuminate\Support\Carbon;
 
 

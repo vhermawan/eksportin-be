@@ -22,7 +22,7 @@ Route::get('/courses/{category}',  'CourseController@getCourses');
 
 Route::get('/umkms/{category}',  'UmkmController@getUmkms');
 Route::get('/umkm-detail/{slug}',  'UmkmController@getDetailUmkm');
-Route::get('/lasted-umkms/{category}',  'UmkmController@getLastUmkm');
+Route::get('/lasted-umkms/{category}/{id}',  'UmkmController@getLastUmkm');
 
 Route::get('/news/{category}',  'NewsController@getNews');
 Route::get('/lasted-news',  'NewsController@getLastNews');

@@ -53,7 +53,7 @@ class UmkmController extends Controller
     }
 
     public function getDetailUmkm($slug){
-        $umkm = Umkm::select('umkms.*', 'category_umkms.name as category', 'cms_users.name as name')
+        $umkm = Umkm::select('umkms.*', 'category_umkms.name as category', 'cms_users.name as name', 'provinces.prov_name')
                 ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
                 ->leftJoin('provinces', 'umkms.id_province', '=', 'provinces.prov_id')
@@ -91,7 +91,7 @@ class UmkmController extends Controller
     }
 
     //get umkm with 3 last umkm
-    public function getLastUmkm($category){
+    public function getLastUmkm($category,$id){
         $umkm = Umkm::select('*', 'category_umkms.name as category','cms_users.name as name_umkm')
                 ->leftJoin('cms_users', 'umkms.id_cms_users', '=', 'cms_users.id')
                 ->leftJoin('category_umkms', 'umkms.id_category_umkms', '=', 'category_umkms.id')
@@ -102,8 +102,8 @@ class UmkmController extends Controller
                 ->where('id_category_umkms',$category)
                 ->whereNotNull('address')
                 ->whereNotNull('description')
-                
                 ->whereNotNull('umkms.id_category_umkms')
+                ->where('umkms.id','!=',$id)
                 ->paginate(3);
         
         return response()->json([
